@@ -1,10 +1,10 @@
 import React from "react";
 import "./Remaining.css";
 
-const RemainingImpl = () => {
+const RemainingImpl = ({ remaining }) => {
   return (
     <div className="remain-block">
-      <span>1000₽</span>
+      <span>{remaining}</span>
     </div>
   );
 };

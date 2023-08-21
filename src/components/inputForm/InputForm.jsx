@@ -10,6 +10,7 @@ const InputFormImpl = ({
   error,
   setError,
   formState,
+  updateBudget,
 }) => {
   const [value, setValue] = useState(propsValue);
 
@@ -26,11 +27,20 @@ const InputFormImpl = ({
         } else {
           setError(false);
         }
+      } else if (valueKey === "password") {
+        if (newValue.length < 8) {
+          setError(true);
+        } else {
+          setError(false);
+        }
       } else {
         setError(false);
       }
+      if (valueKey === "amount") {
+        updateBudget(parseFloat(newValue));
+      }
     },
-    [value, valueKey, onChange, setError, formState]
+    [value, valueKey, onChange, setError, formState, updateBudget]
   );
 
   useEffect(() => {
@@ -40,11 +50,11 @@ const InputFormImpl = ({
   return (
     <div>
       {error && (
-        <div style={{ color: "red", margin: "10px" }}>
+        <div style={{ color: "red", margin: "20px" }}>
           {valueKey === "email"
             ? "Email не может быть пустым"
             : valueKey === "password"
-            ? "Пароль не может быть пустым"
+            ? "Пароль не может быть меньше 8 символов"
             : valueKey === "confirmPassword"
             ? "Пароли не совпадают"
             : ""}

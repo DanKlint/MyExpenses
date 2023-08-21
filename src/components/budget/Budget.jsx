@@ -1,10 +1,10 @@
 import React from "react";
 import "./Budget.css";
 
-const BudgetImpl = () => {
+const BudgetImpl = ({ income }) => {
   return (
     <div className="budget-block">
-      <span>20000₽</span>
+      <span>{income}</span>
     </div>
   );
 };
