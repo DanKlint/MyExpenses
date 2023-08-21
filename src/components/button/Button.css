@@ -7,8 +7,11 @@
   height: 35px;
   border: none;
   cursor: pointer;
+  max-width: 170px;
+  transition: all 0.3s ease;
 }
 
-.link {
-  text-decoration: none;
+.form_button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }

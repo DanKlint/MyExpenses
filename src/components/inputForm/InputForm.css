@@ -8,6 +8,7 @@ input {
   border: none;
   outline: none;
   background-color: rgb(240, 240, 240);
+  max-width: 280px;
 }
 input:focus {
   color: #000000;

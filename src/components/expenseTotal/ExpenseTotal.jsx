@@ -4,7 +4,7 @@ import "./ExpenseTotal.css";
 const ExpenseTotalImpl = () => {
   return (
     <div className="expense-block">
-      <span>Расходы: 1000₽</span>
+      <span>1000₽</span>
     </div>
   );
 };

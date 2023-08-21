@@ -1,47 +1,112 @@
-.background {
+.title {
   background: linear-gradient(
     to top right,
-    rgb(72, 88, 207),
+    rgb(148, 156, 223),
     rgb(199, 80, 192)
   );
-  overflow-y: auto;
+  opacity: 0.9;
+  text-align: center;
+  border-radius: 1rem;
 }
 
 .container-main {
-  background-color: white;
-  max-width: 1200px;
-  margin: auto;
-  height: 100vh;
-  border-radius: 5%;
+  padding: 30px 40px;
+  border-radius: 1rem;
+  border: 3px solid white;
+  margin: 25px;
+  background-color: rgb(255, 255, 255);
 }
 
-.head {
-  margin-top: 30px;
+h1 {
+  letter-spacing: 2px;
+  margin: 0;
+  margin: 10px 0 10px;
+  text-transform: uppercase;
 }
 
-.tittle {
+h3 {
+  border-bottom: 1px solid #bbb;
+  padding-bottom: 5px;
+  margin-bottom: 12px;
   text-align: center;
-  font-size: 40px;
-  width: 300px;
-  height: 100px;
+  color: rgb(0, 0, 0);
 }
 
-.category-table {
-  margin-top: 10px;
+h4 {
+  margin: 0;
+  text-transform: uppercase;
+  color: azure;
 }
 
-.budget {
+#balance {
+  color: azure;
+}
+
+.budget-remain-expense {
+  background: linear-gradient(
+    to top right,
+    rgb(92, 105, 204),
+    rgb(190, 109, 184)
+  );
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  padding: 20px;
+  border-radius: 1rem;
+  box-shadow: 0 5px 6px rgba(100, 109, 114, 0.4),
+    0 5px 6px rgba(156, 158, 159, 0.4);
+}
+
+.budget-remain-expense > div {
+  flex: 1;
+  text-align: center;
+}
+
+.bg-dark {
+  background-color: black;
+  margin: 0 2px;
+
+  border-radius: 3px;
+}
+
+label {
   display: inline-block;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin: 10px 0;
+  font-weight: bolder;
 }
 
-.remaining {
-  display: inline-block;
-  margin-right: 10px;
+#description:focus,
+#amount:focus {
+  width: 100%;
+  transition: 0.5s;
+  border-bottom: 2px solid steelblue;
+  border-right: 2px solid steelblue;
 }
 
-.expense-total {
-  display: inline-block;
-  margin-right: 10px;
+ul {
+  list-style: none;
+  display: inline;
+}
+ul li {
+  font-weight: bolder;
+  font-size: 21px;
+}
+
+.fa {
+  color: steelblue;
+}
+.fa:hover {
+  transform: rotate(20deg);
+}
+
+#error_msg {
+  color: red;
+  background-color: rgb(224, 189, 183);
+  font-weight: bolder;
+  padding: 0 10px;
+  border-radius: 1rem;
+}
+
+.list {
+  color: azure;
 }

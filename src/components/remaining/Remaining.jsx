@@ -4,7 +4,7 @@ import "./Remaining.css";
 const RemainingImpl = () => {
   return (
     <div className="remain-block">
-      <span>Остаток: 1000₽</span>
+      <span>1000₽</span>
     </div>
   );
 };

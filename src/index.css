@@ -6,6 +6,16 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  background: linear-gradient(
+    to top right,
+    rgb(72, 88, 207),
+    rgb(199, 80, 192)
+  );
 }
 
 code {
