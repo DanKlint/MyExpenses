@@ -1,10 +1,10 @@
 import React from "react";
 import "./ExpenseTotal.css";
 
-const ExpenseTotalImpl = ({ expenses }) => {
+const ExpenseTotalImpl = () => {
   return (
     <div className="expense-block">
-      <span>{expenses}</span>
+      <span>0</span>
     </div>
   );
 };

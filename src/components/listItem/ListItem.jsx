@@ -1,17 +1,14 @@
 import React from "react";
+import "./ListItem.css";
 
-const ListItemImpl = ({ records }) => {
+const ListItemImpl = ({ description, amount }) => {
   return (
-    <div>
-      <h3>История</h3>
-      <ul className="list">
-        {records.map((record, index) => (
-          <li key={index}>
-            {record.description}: {record.type} {record.amount}
-          </li>
-        ))}
-      </ul>
-    </div>
+    <li className="list-item">
+      {description}
+      <div>
+        <span className="amount">₽{amount}</span>
+      </div>
+    </li>
   );
 };
 

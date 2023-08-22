@@ -1,10 +1,16 @@
 import React, { useCallback, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { authenticateUser } from "../../redux/reducers/authSlice";
 import { Button } from "../../components/button/Button";
 import { InputForm } from "../../components/inputForm/InputForm";
 import { NavLink } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -31,11 +37,19 @@ const Login = () => {
     (ev) => {
       ev.preventDefault();
 
-      // console.log({ formState });
-      // fetch
+      //Тут не работает, исправить не успел...
+      dispatch(authenticateUser(formState)).then((isAuthenticated) => {
+        if (isAuthenticated) {
+          navigate("/home");
+        } else {
+          // Тут будет обработка ошибки авторизации
+          navigate("/");
+        }
+      });
+
       clearState();
     },
-    [clearState]
+    [clearState, dispatch, formState, navigate]
   );
 
   const isButtonDisabled = !(

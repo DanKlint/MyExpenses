@@ -1,10 +1,20 @@
 import React, { useCallback, useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../../components/button/Button";
 import { InputForm } from "../../components/inputForm/InputForm";
 import { NavLink } from "react-router-dom";
+import { registerUser } from "../../redux/reducers/registrationSlice";
+
 import "./Register.css";
 
 const Register = () => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const [registrationSuccess, setRegistrationSuccess] = useState(false);
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -37,9 +47,17 @@ const Register = () => {
     (ev) => {
       ev.preventDefault();
 
+      dispatch(registerUser(formState));
+
       clearState();
+
+      setRegistrationSuccess(true);
+
+      setTimeout(() => {
+        navigate("/");
+      }, 2000);
     },
-    [clearState]
+    [clearState, formState, dispatch, navigate]
   );
 
   const isButtonDisabled = !(
@@ -88,6 +106,16 @@ const Register = () => {
                 setError={setConfirmPasswordError}
                 formState={formState}
               />
+              {registrationSuccess && (
+                <div
+                  style={{
+                    color: "rgb(20, 165, 15)",
+                    marginLeft: "55px",
+                  }}
+                >
+                  Регистрация прошла успешно!
+                </div>
+              )}
               <Button
                 buttonText="Зарегистрироваться"
                 disabled={isButtonDisabled}

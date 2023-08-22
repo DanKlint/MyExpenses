@@ -1,36 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import { Button } from "../../components/button/Button";
 import { Budget } from "../../components/budget/Budget";
 import { Remaining } from "../../components/remaining/Remaining";
 import { ExpenseTotal } from "../../components/expenseTotal/ExpenseTotal";
 import { InputForm } from "../../components/inputForm/InputForm";
-import { ListItem } from "../../components/listItem/ListItem";
+import { List } from "../../components/list/List";
 import "./Home.css";
 
 const Home = () => {
-  //новое
-  const [income, setIncome] = useState(0);
-  const [expenses, setExpenses] = useState(0);
-  const [remaining, setRemaining] = useState(0);
+  const [formState, setFormState] = useState({
+    description: "",
+    amount: "",
+  });
 
-  const [records, setRecords] = useState([]);
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [amountError, setAmountError] = useState(false);
 
-  const updateBudget = (amount, description) => {
-    const recordType = amount > 0 ? "Доход" : "Расход";
-    const newRecord = { description, amount, type: recordType };
+  const handleChange = useCallback((newValue, valueKey) => {
+    setFormState((prevState) => ({
+      ...prevState,
+      [valueKey]: newValue,
+    }));
+  }, []);
 
-    setRecords([...records, newRecord]);
+  const clearState = useCallback(() => {
+    setFormState({
+      description: "",
+      amount: "",
+    });
+  }, []);
 
-    if (amount > 0) {
-      setIncome(income + amount);
-      setRemaining(remaining + amount);
-    } else {
-      setExpenses(expenses - amount);
-      setRemaining(remaining - amount);
-    }
-  };
+  const handleSubmit = useCallback(
+    (ev) => {
+      ev.preventDefault();
 
-  //новое
+      clearState();
+    },
+    [clearState]
+  );
+
+  const isButtonDisabled = !(
+    formState.description &&
+    formState.amount &&
+    !descriptionError &&
+    !amountError
+  );
+
   return (
     <div className="container-main">
       <div className="title">
@@ -38,13 +53,17 @@ const Home = () => {
       </div>
 
       <h3>Новая запись</h3>
-      <form id="form">
+      <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="description">Описание</label>
           <InputForm
-            type="description"
-            valueKey="text"
+            type="text"
+            valueKey="description"
             inputPlaceholder="Например 'Еда'"
+            value={formState.description}
+            onChange={handleChange}
+            error={descriptionError}
+            setError={setDescriptionError}
           />
         </div>
         <div className="form-control">
@@ -55,29 +74,32 @@ const Home = () => {
             type="number"
             valueKey="amount"
             inputPlaceholder="Введите сумму..."
-            updateBudget={updateBudget}
+            value={formState.amount}
+            onChange={handleChange}
+            error={amountError}
+            setError={setAmountError}
           />
         </div>
-        <Button buttonText="Добавить" />
+        <Button buttonText="Добавить" disabled={isButtonDisabled} />
       </form>
       <br />
 
       <div className="budget-remain-expense">
         <div className="bg-dark">
           <h4>Пополнение</h4>
-          <Budget income={income} />
+          <Budget />
         </div>
         <div className="bg-dark">
           <h4>Остаток</h4>
-          <Remaining remaining={remaining} />
+          <Remaining />
         </div>
         <div className="bg-dark">
           <h4>Траты</h4>
-          <ExpenseTotal expenses={expenses} />
+          <ExpenseTotal />
         </div>
       </div>
-
-      <ListItem records={records} />
+      <h3>История</h3>
+      {/* <List /> */}
     </div>
   );
 };

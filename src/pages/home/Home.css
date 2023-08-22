@@ -73,17 +73,3 @@ label {
   /* margin: 10px 0; */
   font-weight: bolder;
 }
-
-ul {
-  list-style: none;
-  display: inline;
-}
-
-ul li {
-  font-weight: bolder;
-  font-size: 21px;
-}
-
-.list {
-  color: azure;
-}
