@@ -4,11 +4,13 @@ input {
   width: 80%;
   height: 45px;
   margin-bottom: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   border: none;
   outline: none;
   background-color: rgb(240, 240, 240);
   max-width: 280px;
+  padding-left: 10px;
+  color: #3f3f44;
 }
 input:focus {
   color: #000000;
@@ -18,17 +20,13 @@ input:focus {
 
 ::-webkit-input-placeholder {
   color: #3f3f44;
-  padding-left: 10px;
 }
 ::-moz-placeholder {
   color: #3f3f44;
-  padding-left: 10px;
 }
 :-moz-placeholder {
   color: #3f3f44;
-  padding-left: 10px;
 }
 :-ms-input-placeholder {
   color: #3f3f44;
-  padding-left: 10px;
 }

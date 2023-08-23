@@ -90,7 +90,6 @@ const Home = () => {
             valueKey="date"
             value={formState.date}
             onChange={handleChange}
-            // class="calendar"
             error={dateError}
             setError={setDateError}
           />
