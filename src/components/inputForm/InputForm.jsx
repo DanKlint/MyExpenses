@@ -81,7 +81,7 @@ const InputFormImpl = ({
             valueKey === "amount" ||
             valueKey === "date"
               ? "0px"
-              : "0",
+              : "20px",
         }}
         onBlur={onBlur}
         type={type || "text"}
