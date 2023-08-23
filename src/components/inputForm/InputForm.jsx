@@ -50,7 +50,9 @@ const InputFormImpl = ({
           style={{
             color: "red",
             marginLeft:
-              valueKey === "description" || valueKey === "amount"
+              valueKey === "description" ||
+              valueKey === "amount" ||
+              valueKey === "date"
                 ? "0"
                 : "35px",
             marginBottom: "5px",

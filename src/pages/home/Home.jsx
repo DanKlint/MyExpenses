@@ -11,10 +11,12 @@ const Home = () => {
   const [formState, setFormState] = useState({
     description: "",
     amount: "",
+    date: "",
   });
 
   const [descriptionError, setDescriptionError] = useState(false);
   const [amountError, setAmountError] = useState(false);
+  const [dateError, setDateError] = useState(false);
 
   const handleChange = useCallback((newValue, valueKey) => {
     setFormState((prevState) => ({
@@ -27,6 +29,7 @@ const Home = () => {
     setFormState({
       description: "",
       amount: "",
+      date: "",
     });
   }, []);
 
@@ -42,24 +45,26 @@ const Home = () => {
   const isButtonDisabled = !(
     formState.description &&
     formState.amount &&
+    formState.date &&
     !descriptionError &&
-    !amountError
+    !amountError &&
+    !dateError
   );
 
   return (
     <div className="container-main">
-      <div className="title">
+      <div className="title-box">
         <h1 className="title">Мои расходы</h1>
       </div>
 
-      <h3>Новая запись</h3>
+      <h3 className="new-entry">Новая запись</h3>
       <form onSubmit={handleSubmit}>
         <div className="form-control">
           <label htmlFor="description">Описание</label>
           <InputForm
             type="text"
             valueKey="description"
-            inputPlaceholder="Например 'Еда'"
+            inputPlaceholder="Например «Еда»"
             value={formState.description}
             onChange={handleChange}
             error={descriptionError}
@@ -67,17 +72,27 @@ const Home = () => {
           />
         </div>
         <div className="form-control">
-          <label htmlFor="amount">
-            Сумма(+/-) <br />
-          </label>
+          <label htmlFor="amount">Сумма(+/-)</label>
           <InputForm
             type="number"
             valueKey="amount"
-            inputPlaceholder="Введите сумму..."
+            inputPlaceholder="Введите сумму"
             value={formState.amount}
             onChange={handleChange}
             error={amountError}
             setError={setAmountError}
+          />
+        </div>
+        <div className="form-control">
+          <label htmlFor="start">Дата:</label>
+          <InputForm
+            type="date"
+            valueKey="date"
+            value={formState.date}
+            onChange={handleChange}
+            // class="calendar"
+            error={dateError}
+            setError={setDateError}
           />
         </div>
         <Button buttonText="Добавить" disabled={isButtonDisabled} />
@@ -98,7 +113,7 @@ const Home = () => {
           <ExpenseTotal />
         </div>
       </div>
-      <h3>История</h3>
+      <h3 className="history">История</h3>
       {/* <List /> */}
     </div>
   );

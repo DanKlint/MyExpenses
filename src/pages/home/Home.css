@@ -1,57 +1,51 @@
-.title {
-  background: linear-gradient(
-    to top right,
-    rgb(136, 84, 199),
-    rgb(178, 82, 195)
-  );
+.title-box {
   text-align: center;
-  border-radius: 1rem;
   color: rgb(0, 0, 0);
-  box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
-  text-shadow: 0px 2px 2px rgba(0, 0, 0, 0.7);
+  border-bottom: 1px solid #bbb;
+}
+
+.title {
+  margin-bottom: 20px;
 }
 
 .container-main {
   padding: 30px 40px;
-  border-radius: 1rem;
-  border: 3px solid white;
+  border-radius: 7%;
   margin: 25px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
 }
 
 h1 {
-  letter-spacing: 2px;
+  color: rgb(73, 73, 73);
   margin: 0;
   margin: 10px 0 10px;
-  text-transform: uppercase;
 }
 
 h3 {
-  border-bottom: 1px solid #bbb;
   padding-bottom: 5px;
   margin-bottom: 12px;
   text-align: center;
-  color: rgb(0, 0, 0);
+  color: rgb(73, 73, 73);
 }
 
 h4 {
   margin: 0;
-  text-transform: uppercase;
+  font-size: 18px;
   color: rgb(255, 255, 255);
 }
 
+.new-entry {
+  margin-top: 30px;
+}
+
 .budget-remain-expense {
-  background: linear-gradient(
-    to top right,
-    rgb(101, 86, 203),
-    rgb(146, 84, 199)
-  );
+  background: linear-gradient(to right, rgb(66, 84, 168), rgb(111, 92, 171));
   display: flex;
   justify-content: space-between;
   margin: 20px 0;
   padding: 20px;
-  border-radius: 1rem;
+  border-radius: 40px;
   box-shadow: inset 0px 5px 10px 0px rgba(0, 0, 0, 0.7);
 }
 
@@ -61,15 +55,17 @@ h4 {
 }
 
 .bg-dark {
-  background-color: black;
-  margin: 0 2px;
-
-  border-radius: 3px;
+  background-color: rgb(73, 73, 73);
+  margin: 0 10px;
+  border-radius: 20px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.9);
 }
 
 label {
   display: inline-block;
-  /* margin: 10px 0; */
   font-weight: bolder;
+}
+
+.history {
+  border-bottom: 1px solid #bbb;
 }
