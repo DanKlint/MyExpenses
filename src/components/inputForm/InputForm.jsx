@@ -75,6 +75,14 @@ const InputFormImpl = ({
       )}
 
       <input
+        style={{
+          marginBottom:
+            valueKey === "description" ||
+            valueKey === "amount" ||
+            valueKey === "date"
+              ? "0px"
+              : "0",
+        }}
         onBlur={onBlur}
         type={type || "text"}
         name={valueKey}
