@@ -16,6 +16,11 @@ const Home = () => {
   });
 
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [historyList, setHistoryList] = useState([]);
+
+  const [budgetValue, setBudgetValue] = useState(0);
+  const [remainingValue, setRemainingValue] = useState(0);
+  const [expenseTotalValue, setExpenseTotalValue] = useState(0);
 
   const openProfile = () => {
     setIsProfileOpen(true);
@@ -48,9 +53,29 @@ const Home = () => {
     (ev) => {
       ev.preventDefault();
 
+      const newItem = {
+        description: formState.description,
+        date: formState.date,
+        amount: formState.amount,
+      };
+
+      // Определите знак суммы (положительная или отрицательная)
+      const amount = parseFloat(formState.amount);
+      const isExpense = amount < 0;
+
+      if (isExpense) {
+        setExpenseTotalValue((prevTotal) => prevTotal - amount);
+        setRemainingValue((prevRemaining) => prevRemaining + amount);
+      } else {
+        setBudgetValue((prevBudget) => prevBudget + amount);
+        setRemainingValue((prevRemaining) => prevRemaining + amount);
+      }
+
+      setHistoryList((prevList) => [newItem, ...prevList]);
+
       clearState();
     },
-    [clearState]
+    [clearState, formState]
   );
 
   const isButtonDisabled = !(
@@ -67,6 +92,7 @@ const Home = () => {
       <div className="title-box">
         <h1 className="title">Мои расходы</h1>
         <svg
+          className="open-profile"
           xmlns="http://www.w3.org/2000/svg"
           height="25px"
           viewBox="0 0 448 512"
@@ -123,19 +149,33 @@ const Home = () => {
       <div className="budget-remain-expense">
         <div className="bg-dark">
           <h4>Пополнение</h4>
-          <Budget />
+          <Budget budget={budgetValue} />
         </div>
         <div className="bg-dark">
           <h4>Остаток</h4>
-          <Remaining />
+          <Remaining remaining={remainingValue} />
         </div>
         <div className="bg-dark">
           <h4>Траты</h4>
-          <ExpenseTotal />
+          <ExpenseTotal expenseTotal={expenseTotalValue} />
         </div>
       </div>
       <h3 className="history">История</h3>
-      <ul className="list">{/* <ListItem/> */}</ul>
+      <div className="filter">
+        <div className="filter-description">Описание</div>
+        <div className="filter-date">Дата</div>
+        <div className="filter-amount">Сумма</div>
+      </div>
+      <ul className="list">
+        {historyList.map((item, index) => (
+          <ListItem
+            key={index}
+            description={item.description}
+            date={item.date}
+            amount={item.amount}
+          />
+        ))}
+      </ul>
     </div>
   );
 };

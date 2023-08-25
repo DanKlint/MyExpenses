@@ -11,12 +11,12 @@
   transition: all 0.3s ease;
 }
 
-svg {
+.open-profile {
   display: inline-block;
   margin-left: 200px; /* временная мера */
 }
 
-svg:hover {
+.open-profile:hover {
   cursor: pointer;
   transform: scale(1.09);
 }
@@ -94,5 +94,25 @@ label {
 }
 
 .history {
+  margin: 0 auto;
   border-bottom: 1px solid #bbb;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-description {
+  flex: 1;
+}
+
+.filter-date {
+  text-align: center;
+}
+
+.filter-amount {
+  flex: 1;
+  text-align: right;
 }

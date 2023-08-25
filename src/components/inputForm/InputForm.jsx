@@ -14,6 +14,7 @@ const InputFormImpl = ({
   const [value, setValue] = useState(propsValue);
 
   const onBlur = useCallback(
+    //разделить или вынести проверки
     (ev) => {
       let newValue = value;
       onChange(newValue, valueKey);
@@ -28,6 +29,13 @@ const InputFormImpl = ({
         }
       } else if (valueKey === "password") {
         if (newValue.length < 8) {
+          setError(true);
+        } else {
+          setError(false);
+        }
+      } else if (valueKey === "email") {
+        const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if (!emailPattern.test(newValue)) {
           setError(true);
         } else {
           setError(false);
@@ -59,7 +67,7 @@ const InputFormImpl = ({
           }}
         >
           {valueKey === "email"
-            ? "Email не может быть пустым"
+            ? "Укажите верный email"
             : valueKey === "password"
             ? "Пароль не может быть меньше 8 символов"
             : valueKey === "confirmPassword"
