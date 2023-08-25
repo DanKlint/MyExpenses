@@ -1,13 +1,12 @@
 import React from "react";
 import "./ListItem.css";
 
-const ListItemImpl = ({ description, amount }) => {
+const ListItemImpl = ({ description, date, amount }) => {
   return (
     <li className="list-item">
-      {description}
-      <div>
-        <span className="amount">₽{amount}</span>
-      </div>
+      <div className="description">{description}</div>
+      <div className="date">{date}</div>
+      <div className="amount">{amount}₽</div>
     </li>
   );
 };
