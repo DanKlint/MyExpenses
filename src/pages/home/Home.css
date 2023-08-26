@@ -88,23 +88,29 @@ label {
 .history {
   margin: 0 auto;
   border-bottom: 1px solid #bbb;
+  margin-bottom: 10px;
 }
 
 .filter {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 10px;
+  padding: 0px 5px 0px 5px;
 }
 
 .filter-description {
   flex: 1;
+  color: rgb(73, 73, 73);
 }
 
 .filter-date {
   text-align: center;
+  color: rgb(73, 73, 73);
 }
 
 .filter-amount {
   flex: 1;
   text-align: right;
+  color: rgb(73, 73, 73);
 }

@@ -1,9 +1,9 @@
 import React from "react";
 import "./ExpenseTotal.css";
 
-const ExpenseTotalImpl = ({ expenseTotal }) => {
+const ExpenseTotalImpl = ({ expenseTotal, onClick }) => {
   return (
-    <div className="expense-block">
+    <div className="expense-block" onClick={onClick}>
       <span>{expenseTotal}₽</span>
     </div>
   );

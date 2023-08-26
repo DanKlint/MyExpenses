@@ -15,12 +15,28 @@ const Home = () => {
     date: "",
   });
 
-  const [isProfileOpen, setIsProfileOpen] = useState(false);
-  const [historyList, setHistoryList] = useState([]);
-
   const [budgetValue, setBudgetValue] = useState(0);
   const [remainingValue, setRemainingValue] = useState(0);
   const [expenseTotalValue, setExpenseTotalValue] = useState(0);
+
+  const [descriptionError, setDescriptionError] = useState(false);
+  const [amountError, setAmountError] = useState(false);
+  const [dateError, setDateError] = useState(false);
+
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const [historyList, setHistoryList] = useState([]);
+
+  const [isFilterBudgetActive, setIsFilterBudgetActive] = useState(false); //вынести фильтры
+  const [isFilterExpenseActive, setIsFilterExpenseActive] = useState(false);
+
+  const toggleFilterBudget = () => {
+    setIsFilterBudgetActive(!isFilterBudgetActive);
+  };
+
+  const toggleFilterExpense = () => {
+    setIsFilterExpenseActive(!isFilterExpenseActive);
+  };
 
   const openProfile = () => {
     setIsProfileOpen(true);
@@ -29,10 +45,6 @@ const Home = () => {
   const closeProfile = () => {
     setIsProfileOpen(false);
   };
-
-  const [descriptionError, setDescriptionError] = useState(false);
-  const [amountError, setAmountError] = useState(false);
-  const [dateError, setDateError] = useState(false);
 
   const handleChange = useCallback((newValue, valueKey) => {
     setFormState((prevState) => ({
@@ -59,7 +71,6 @@ const Home = () => {
         amount: formState.amount,
       };
 
-      // Определите знак суммы (положительная или отрицательная)
       const amount = parseFloat(formState.amount);
       const isExpense = amount < 0;
 
@@ -149,7 +160,7 @@ const Home = () => {
       <div className="budget-remain-expense">
         <div className="bg-dark">
           <h4>Пополнение</h4>
-          <Budget budget={budgetValue} />
+          <Budget budget={budgetValue} onClick={toggleFilterBudget} />
         </div>
         <div className="bg-dark">
           <h4>Остаток</h4>
@@ -157,7 +168,10 @@ const Home = () => {
         </div>
         <div className="bg-dark">
           <h4>Траты</h4>
-          <ExpenseTotal expenseTotal={expenseTotalValue} />
+          <ExpenseTotal
+            expenseTotal={expenseTotalValue}
+            onClick={toggleFilterExpense}
+          />
         </div>
       </div>
       <h3 className="history">История</h3>
@@ -173,6 +187,8 @@ const Home = () => {
             description={item.description}
             date={item.date}
             amount={item.amount}
+            isFilterBudgetActive={isFilterBudgetActive}
+            isFilterExpenseActive={isFilterExpenseActive}
           />
         ))}
       </ul>

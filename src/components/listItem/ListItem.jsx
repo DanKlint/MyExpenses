@@ -1,7 +1,21 @@
 import React from "react";
 import "./ListItem.css";
 
-const ListItemImpl = ({ description, date, amount }) => {
+const ListItemImpl = ({
+  description,
+  date,
+  amount,
+  isFilterBudgetActive,
+  isFilterExpenseActive,
+}) => {
+  if (isFilterBudgetActive && amount <= 0) {
+    return null;
+  }
+
+  if (isFilterExpenseActive && amount > 0) {
+    return null;
+  }
+
   const formatDate = (dateString) => {
     const options = { year: "numeric", month: "numeric", day: "numeric" };
     return new Date(dateString).toLocaleDateString(undefined, options);
