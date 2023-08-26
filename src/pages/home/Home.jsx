@@ -30,11 +30,11 @@ const Home = () => {
   const [isFilterBudgetActive, setIsFilterBudgetActive] = useState(false); //вынести фильтры
   const [isFilterExpenseActive, setIsFilterExpenseActive] = useState(false);
 
-  const toggleFilterBudget = () => {
+  const toggleBudgetFilter = () => {
     setIsFilterBudgetActive(!isFilterBudgetActive);
   };
 
-  const toggleFilterExpense = () => {
+  const toggleExpenseFilter = () => {
     setIsFilterExpenseActive(!isFilterExpenseActive);
   };
 
@@ -160,7 +160,7 @@ const Home = () => {
       <div className="budget-remain-expense">
         <div className="bg-dark">
           <h4>Пополнение</h4>
-          <Budget budget={budgetValue} onClick={toggleFilterBudget} />
+          <Budget budget={budgetValue} onClick={toggleBudgetFilter} />
         </div>
         <div className="bg-dark">
           <h4>Остаток</h4>
@@ -170,7 +170,7 @@ const Home = () => {
           <h4>Траты</h4>
           <ExpenseTotal
             expenseTotal={expenseTotalValue}
-            onClick={toggleFilterExpense}
+            onClick={toggleExpenseFilter}
           />
         </div>
       </div>

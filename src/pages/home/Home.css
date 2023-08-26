@@ -96,21 +96,24 @@ label {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  padding: 0px 5px 0px 5px;
+  padding: 0px 7px 0px 7px;
 }
 
 .filter-description {
   flex: 1;
   color: rgb(73, 73, 73);
+  font-weight: bold;
 }
 
 .filter-date {
   text-align: center;
   color: rgb(73, 73, 73);
+  font-weight: bold;
 }
 
 .filter-amount {
   flex: 1;
   text-align: right;
   color: rgb(73, 73, 73);
+  font-weight: bold;
 }
